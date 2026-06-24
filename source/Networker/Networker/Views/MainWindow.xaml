@@ -19,6 +19,10 @@
             <views:PortScanView DataContext="{Binding PortScan}"/>
         </TabItem>
 
+        <TabItem Header="Local Ports">
+            <views:LocalPortView DataContext="{Binding LocalPort}"/>
+        </TabItem>
+
         <TabItem Header="Range Scan">
             <views:RangeScanView DataContext="{Binding RangeScan}"/>
         </TabItem>
@@ -27,7 +31,6 @@
             <views:TracerouteView DataContext="{Binding Traceroute}"/>
         </TabItem>
         <!-- Future tabs (wire up as features land) -->
-        <TabItem Header="Local Ports" IsEnabled="False"/>
         <TabItem Header="DNS" IsEnabled="False"/>
     </TabControl>
 </Window>

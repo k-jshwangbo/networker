@@ -6,6 +6,7 @@ public sealed class MainViewModel
 {
     public PingViewModel Ping { get; }
     public PortScanViewModel PortScan { get; }
+    public LocalPortViewModel LocalPort { get; }
     public RangeScanViewModel RangeScan { get; }
     public TracerouteViewModel Traceroute { get; }
 
@@ -16,6 +17,9 @@ public sealed class MainViewModel
 
         IPortScanService portScanService = new PortScanService();
         PortScan = new PortScanViewModel(portScanService);
+
+        ILocalPortService localPortService = new LocalPortService();
+        LocalPort = new LocalPortViewModel(localPortService);
 
         IHostDiscoveryService discovery = new HostDiscoveryService(pingService);
         RangeScan = new RangeScanViewModel(discovery);
