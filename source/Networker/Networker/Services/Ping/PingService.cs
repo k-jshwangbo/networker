@@ -1,14 +1,15 @@
 ﻿using Networker.Models;
 using System.Net.NetworkInformation;
+using NetPing = System.Net.NetworkInformation.Ping;
 
-namespace Networker.Services;
+namespace Networker.Services.Ping;
 
 public sealed class PingService : IPingService
 {
     public async Task<PingResult> PingOnceAsync(
         string host, int sequence, TimeSpan timeout, int bufferSize, CancellationToken cancellationToken)
     {
-        using var ping = new Ping();
+        using var ping = new NetPing();
         var buffer = new byte[bufferSize];
         var options = new PingOptions(ttl:128, dontFragment: true);
 

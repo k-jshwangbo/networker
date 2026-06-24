@@ -1,6 +1,6 @@
 ﻿using Networker.Core;
 using Networker.Models;
-using Networker.Services;
+using Networker.Services.Ping;
 using System.Collections.ObjectModel;
 
 namespace Networker.ViewModels;

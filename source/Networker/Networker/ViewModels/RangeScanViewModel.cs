@@ -1,6 +1,6 @@
 ﻿using Networker.Core;
 using Networker.Models;
-using Networker.Services;
+using Networker.Services.RangeScan;
 using System.Collections.ObjectModel;
 using System.Net;
 

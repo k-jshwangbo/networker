@@ -1,7 +1,7 @@
 ﻿using Networker.Models;
 using System.Net;
 
-namespace Networker.Services;
+namespace Networker.Services.RangeScan;
 public interface IHostDiscoveryService
 {
     Task<HostScanResult> ProbeAsync(

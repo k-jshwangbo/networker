@@ -1,6 +1,6 @@
 ﻿using Networker.Models;
 
-namespace Networker.Services;
+namespace Networker.Services.PortScan.Remote;
 public interface IPortScanService
 {
     Task<PortScanResult> ScanPortAsync(

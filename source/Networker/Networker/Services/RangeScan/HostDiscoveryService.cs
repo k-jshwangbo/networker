@@ -1,8 +1,9 @@
 ﻿using Networker.Models;
+using Networker.Services.Ping;
 using System.Net;
 using System.Net.NetworkInformation;
 
-namespace Networker.Services;
+namespace Networker.Services.RangeScan;
 
 public sealed class HostDiscoveryService : IHostDiscoveryService
 {

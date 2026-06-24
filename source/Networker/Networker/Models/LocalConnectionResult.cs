@@ -17,7 +17,7 @@ public enum TcpConnectionState
 
 /// <summary>
 /// A single local TCP endpoint (any state) together with the owning process.
-/// Produced by <see cref="Services.ILocalPortService"/>.
+/// Produced by <see cref="Services.PortScan.Local.ILocalPortService"/>.
 /// </summary>
 public sealed class LocalConnectionResult
 {

@@ -2,8 +2,9 @@
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using NetPing = System.Net.NetworkInformation.Ping;
 
-namespace Networker.Services;
+namespace Networker.Services.Traceroute;
 public sealed class TracerouteService : ITracerouteService
 {
     private static readonly byte[] Payload = new byte[32];
@@ -52,7 +53,7 @@ public sealed class TracerouteService : ITracerouteService
     private static async Task<(IPAddress? Address, long? Rtt, bool IsDestination)> SendProbeAsync(
         IPAddress target, int ttl, TimeSpan timeout, CancellationToken cancellationToken)
     {
-        using var ping = new Ping();
+        using var ping = new NetPing();
         var options = new PingOptions(ttl, dontFragment: true);
 
         try

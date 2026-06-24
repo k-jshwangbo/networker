@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Net.Sockets;
 
-namespace Networker.Services;
+namespace Networker.Services.PortScan.Remote;
 public sealed class PortScanService : IPortScanService
 {
     public async Task<PortScanResult> ScanPortAsync(

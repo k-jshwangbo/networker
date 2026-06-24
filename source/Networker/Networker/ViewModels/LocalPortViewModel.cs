@@ -1,6 +1,6 @@
 ﻿using Networker.Core;
 using Networker.Models;
-using Networker.Services;
+using Networker.Services.PortScan.Local;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

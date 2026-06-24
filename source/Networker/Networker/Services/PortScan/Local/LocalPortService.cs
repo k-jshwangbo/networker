@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Runtime.InteropServices;
 
-namespace Networker.Services;
+namespace Networker.Services.PortScan.Local;
 public sealed class LocalPortService : ILocalPortService
 {
     private const int AF_INET = 2;

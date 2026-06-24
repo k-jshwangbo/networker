@@ -1,6 +1,6 @@
 ﻿using Networker.Models;
 
-namespace Networker.Services;
+namespace Networker.Services.Ping;
 public interface IPingService
 {
     Task<PingResult> PingOnceAsync(

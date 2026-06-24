@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
-namespace Networker.Services;
+namespace Networker.Services.RangeScan;
 public static class ArpResolver
 {
     [DllImport("iphlpapi.dll", ExactSpelling = true)]

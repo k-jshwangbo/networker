@@ -1,6 +1,6 @@
 ﻿using Networker.Models;
 
-namespace Networker.Services;
+namespace Networker.Services.Traceroute;
 public interface ITracerouteService
 {
     Task TraceAsync(
