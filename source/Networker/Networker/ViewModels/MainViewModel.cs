@@ -7,6 +7,7 @@ public sealed class MainViewModel
     public PingViewModel Ping { get; }
     public PortScanViewModel PortScan { get; }
     public RangeScanViewModel RangeScan { get; }
+    public TracerouteViewModel Traceroute { get; }
 
     public MainViewModel()
     {
@@ -18,5 +19,8 @@ public sealed class MainViewModel
 
         IHostDiscoveryService discovery = new HostDiscoveryService(pingService);
         RangeScan = new RangeScanViewModel(discovery);
+
+        ITracerouteService traceService = new TracerouteService();
+        Traceroute = new TracerouteViewModel(traceService);
     }
 }
