@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:vm="clr-namespace:Networker.ViewModels"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=vm:PortScanViewModel}"
@@ -17,33 +18,41 @@
         </Grid.RowDefinitions>
 
         <!-- Input controls -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8" VerticalAlignment="Center">
-            <TextBlock Text="Host:" VerticalAlignment="Center" Margin="0,0,4,0"/>
-            <TextBox Width="150" VerticalAlignment="Center"
-                     Text="{Binding Host, UpdateSourceTrigger=PropertyChanged}"/>
+        <ui:Card Grid.Row="0" Margin="0,0,0,8" Padding="10">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Host:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <ui:TextBox Width="150" VerticalAlignment="Center"
+                            PlaceholderText="hostname or IP"
+                            Text="{Binding Host, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <TextBlock Text="Ports:" VerticalAlignment="Center" Margin="12,0,4,0"/>
-            <TextBox Width="140" VerticalAlignment="Center"
-                     ToolTip="e.g. 1-1024,3389,8080"
-                     Text="{Binding PortRangeText, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Ports:" VerticalAlignment="Center" Margin="12,0,4,0"/>
+                <ui:TextBox Width="150" VerticalAlignment="Center"
+                            PlaceholderText="1-1024,3389,8080"
+                            ToolTip="e.g. 1-1024,3389,8080"
+                            Text="{Binding PortRangeText, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <TextBlock Text="Timeout (ms):" VerticalAlignment="Center" Margin="12,0,4,0"/>
-            <TextBox Width="55" VerticalAlignment="Center" Text="{Binding TimeoutMs}"/>
+                <TextBlock Text="Timeout (ms):" VerticalAlignment="Center" Margin="12,0,4,0"/>
+                <ui:TextBox Width="60" VerticalAlignment="Center" Text="{Binding TimeoutMs}"/>
 
-            <TextBlock Text="Threads:" VerticalAlignment="Center" Margin="12,0,4,0"/>
-            <TextBox Width="50" VerticalAlignment="Center" Text="{Binding MaxConcurrency}"/>
+                <TextBlock Text="Threads:" VerticalAlignment="Center" Margin="12,0,4,0"/>
+                <ui:TextBox Width="55" VerticalAlignment="Center" Text="{Binding MaxConcurrency}"/>
 
-            <Button Content="Start" Width="64" Margin="12,0,0,0" Command="{Binding StartCommand}"/>
-            <Button Content="Stop"  Width="64" Margin="6,0,0,0"  Command="{Binding StopCommand}"/>
-            <Button Content="Clear" Width="64" Margin="6,0,0,0"  Command="{Binding ClearCommand}"/>
-        </StackPanel>
+                <ui:Button Content="Start" Appearance="Primary" Margin="12,0,0,0"
+                           Icon="{ui:SymbolIcon Play24}" Command="{Binding StartCommand}"/>
+                <ui:Button Content="Stop" Margin="6,0,0,0"
+                           Icon="{ui:SymbolIcon Stop24}" Command="{Binding StopCommand}"/>
+                <ui:Button Content="Clear" Margin="6,0,0,0"
+                           Icon="{ui:SymbolIcon Delete24}" Command="{Binding ClearCommand}"/>
+            </StackPanel>
+        </ui:Card>
 
         <!-- Progress + error -->
         <Grid Grid.Row="1" Margin="0,0,0,8">
             <ProgressBar Height="18" Minimum="0"
                          Maximum="{Binding Total, Mode=OneWay}"
                          Value="{Binding Scanned, Mode=OneWay}"/>
-            <TextBlock Text="{Binding ErrorMessage}" Foreground="#C00000"
+            <TextBlock Text="{Binding ErrorMessage}"
+                       Foreground="{DynamicResource SystemFillColorCriticalBrush}"
                        VerticalAlignment="Center" Margin="6,0,0,0"/>
         </Grid>
 
@@ -52,6 +61,7 @@
                   ItemsSource="{Binding OpenPorts}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
+                  RowHeaderWidth="0"
                   GridLinesVisibility="Horizontal"
                   HeadersVisibility="Column"
                   CanUserAddRows="False">
@@ -64,8 +74,8 @@
         </DataGrid>
 
         <!-- Status bar -->
-        <Border Grid.Row="3" Margin="0,8,0,0" Padding="8,6" Background="#F2F2F2" CornerRadius="4">
+        <ui:Card Grid.Row="3" Margin="0,8,0,0" Padding="10,6">
             <TextBlock Text="{Binding StatusSummary}" FontWeight="SemiBold"/>
-        </Border>
+        </ui:Card>
     </Grid>
 </UserControl>

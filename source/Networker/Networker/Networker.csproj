@@ -13,4 +13,8 @@
     <Content Include="icon_network_512x512.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="WPF-UI" Version="4.3.0" />
+  </ItemGroup>
+
 </Project>

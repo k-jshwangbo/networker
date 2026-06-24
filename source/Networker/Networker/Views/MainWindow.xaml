@@ -1,36 +1,49 @@
-﻿<Window x:Class="Networker.Views.MainWindow"
+﻿<ui:FluentWindow x:Class="Networker.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:views="clr-namespace:Networker.Views"
         xmlns:vm="clr-namespace:Networker.ViewModels"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         Title="Networker" Height="640" Width="960"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        ExtendsContentIntoTitleBar="True"
+        WindowBackdropType="Mica"
+        WindowCornerPreference="Round">
 
-    <Window.DataContext>
+    <ui:FluentWindow.DataContext>
         <vm:MainViewModel/>
-    </Window.DataContext>
+    </ui:FluentWindow.DataContext>
 
-    <TabControl Margin="8">
-        <TabItem Header="Ping">
-            <views:PingView DataContext="{Binding Ping}"/>
-        </TabItem>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <TabItem Header="Remote Port Scan">
-            <views:PortScanView DataContext="{Binding PortScan}"/>
-        </TabItem>
+        <ui:TitleBar Grid.Row="0" Title="Networker"/>
 
-        <TabItem Header="Local Ports">
-            <views:LocalPortView DataContext="{Binding LocalPort}"/>
-        </TabItem>
+        <TabControl Grid.Row="1" Margin="8,0,8,8">
+            <TabItem Header="Ping">
+                <views:PingView DataContext="{Binding Ping}"/>
+            </TabItem>
 
-        <TabItem Header="Range Scan">
-            <views:RangeScanView DataContext="{Binding RangeScan}"/>
-        </TabItem>
+            <TabItem Header="Remote Port Scan">
+                <views:PortScanView DataContext="{Binding PortScan}"/>
+            </TabItem>
 
-        <TabItem Header="Traceroute">
-            <views:TracerouteView DataContext="{Binding Traceroute}"/>
-        </TabItem>
-        <!-- Future tabs (wire up as features land) -->
-        <TabItem Header="DNS" IsEnabled="False"/>
-    </TabControl>
-</Window>
+            <TabItem Header="Local Ports">
+                <views:LocalPortView DataContext="{Binding LocalPort}"/>
+            </TabItem>
+
+            <TabItem Header="Range Scan">
+                <views:RangeScanView DataContext="{Binding RangeScan}"/>
+            </TabItem>
+
+            <TabItem Header="Traceroute">
+                <views:TracerouteView DataContext="{Binding Traceroute}"/>
+            </TabItem>
+            <!-- Future tabs (wire up as features land) -->
+            <TabItem Header="DNS" IsEnabled="False"/>
+        </TabControl>
+    </Grid>
+</ui:FluentWindow>

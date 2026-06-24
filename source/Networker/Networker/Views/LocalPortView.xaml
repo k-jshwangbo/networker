@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:vm="clr-namespace:Networker.ViewModels"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=vm:LocalPortViewModel}"
@@ -17,28 +18,38 @@
         </Grid.RowDefinitions>
 
         <!-- Toolbar -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8" VerticalAlignment="Center">
-            <Button Content="Refresh" Width="72" Command="{Binding RefreshCommand}"/>
-            <Button Content="Clear"   Width="64" Margin="6,0,0,0" Command="{Binding ClearCommand}"/>
+        <ui:Card Grid.Row="0" Margin="0,0,0,8" Padding="10">
+            <DockPanel>
+                <ui:TextBox DockPanel.Dock="Right" Width="260"
+                            PlaceholderText="Filter: process, port, PID, service"
+                            Icon="{ui:SymbolIcon Search24}"
+                            Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <CheckBox Content="Listening only" VerticalAlignment="Center" Margin="16,0,0,0"
-                      IsChecked="{Binding ListenOnly}"/>
-
-            <TextBlock Text="Filter:" VerticalAlignment="Center" Margin="16,0,4,0"/>
-            <TextBox Width="200" VerticalAlignment="Center"
-                     ToolTip="Match process, port, PID, or service"
-                     Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
-        </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <ui:Button Content="Refresh" Appearance="Primary"
+                               Icon="{ui:SymbolIcon ArrowClockwise24}"
+                               Command="{Binding RefreshCommand}"/>
+                    <ui:Button Content="Clear" Margin="8,0,0,0"
+                               Icon="{ui:SymbolIcon Delete24}"
+                               Command="{Binding ClearCommand}"/>
+                    <ui:ToggleSwitch Content="Listening only" Margin="20,0,0,0"
+                                     VerticalAlignment="Center"
+                                     IsChecked="{Binding ListenOnly}"/>
+                </StackPanel>
+            </DockPanel>
+        </ui:Card>
 
         <!-- Error line -->
-        <TextBlock Grid.Row="1" Text="{Binding ErrorMessage}" Foreground="#C00000"
-                   Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <ui:TextBlock Grid.Row="1" Text="{Binding ErrorMessage}"
+                      Foreground="{DynamicResource SystemFillColorCriticalBrush}"
+                      Margin="2,0,0,8" TextWrapping="Wrap"/>
 
         <!-- Connections grid -->
         <DataGrid Grid.Row="2"
                   ItemsSource="{Binding ConnectionsView}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
+                  RowHeaderWidth="0"
                   GridLinesVisibility="Horizontal"
                   HeadersVisibility="Column"
                   CanUserAddRows="False"
@@ -55,8 +66,8 @@
         </DataGrid>
 
         <!-- Status bar -->
-        <Border Grid.Row="3" Margin="0,8,0,0" Padding="8,6" Background="#F2F2F2" CornerRadius="4">
+        <ui:Card Grid.Row="3" Margin="0,8,0,0" Padding="10,6">
             <TextBlock Text="{Binding StatusSummary}" FontWeight="SemiBold"/>
-        </Border>
+        </ui:Card>
     </Grid>
 </UserControl>
