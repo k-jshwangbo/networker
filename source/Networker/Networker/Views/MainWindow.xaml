@@ -15,9 +15,12 @@
             <views:PingView DataContext="{Binding Ping}"/>
         </TabItem>
 
+        <TabItem Header="Remote Port Scan">
+            <views:PortScanView DataContext="{Binding PortScan}"/>
+        </TabItem>
+
         <!-- Future tabs (wire up as features land) -->
         <TabItem Header="Local Ports" IsEnabled="False"/>
-        <TabItem Header="Remote Port Scan" IsEnabled="False"/>
         <TabItem Header="Range Scan" IsEnabled="False"/>
         <TabItem Header="Traceroute" IsEnabled="False"/>
         <TabItem Header="DNS" IsEnabled="False"/>
