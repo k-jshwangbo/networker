@@ -1,4 +1,5 @@
-﻿using Networker.Services.BannerGrab;
+﻿using Networker.Services;
+using Networker.Services.BannerGrab;
 using Networker.Services.Ping;
 using Networker.Services.PortScan.Local;
 using Networker.Services.PortScan.Remote;
@@ -15,6 +16,7 @@ public sealed class MainViewModel
     public BannerGrabViewModel BannerGrab { get; }
     public RangeScanViewModel RangeScan { get; }
     public TracerouteViewModel Traceroute { get; }
+    public SubnetViewModel Subnet { get; }
 
     public MainViewModel()
     {
@@ -35,5 +37,7 @@ public sealed class MainViewModel
 
         ITracerouteService traceService = new TracerouteService();
         Traceroute = new TracerouteViewModel(traceService);
+
+        Subnet = new SubnetViewModel();
     }
 }

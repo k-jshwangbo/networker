@@ -46,6 +46,10 @@
             <TabItem Header="Traceroute">
                 <views:TracerouteView DataContext="{Binding Traceroute}"/>
             </TabItem>
+
+            <TabItem Header="Subnet Calc">
+                <views:SubnetView DataContext="{Binding Subnet}"/>
+            </TabItem>
             <!-- Future tabs (wire up as features land) -->
             <TabItem Header="DNS" IsEnabled="False"/>
         </TabControl>
