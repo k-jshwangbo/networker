@@ -74,7 +74,7 @@
         </Grid>
 
         <!-- Banners grid -->
-        <DataGrid Grid.Row="2"
+        <DataGrid Grid.Row="2" ContextMenu="{StaticResource GridContextMenu}"
                   ItemsSource="{Binding Banners}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"

@@ -40,7 +40,7 @@
         </ui:Card>
 
         <!-- Results grid -->
-        <DataGrid Grid.Row="1"
+        <DataGrid Grid.Row="1" ContextMenu="{StaticResource GridContextMenu}"
                   ItemsSource="{Binding Results}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"

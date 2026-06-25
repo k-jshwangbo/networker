@@ -10,6 +10,21 @@
                 <ui:ThemesDictionary Theme="Light" />
                 <ui:ControlsDictionary />
             </ResourceDictionary.MergedDictionaries>
+
+            <!--
+                Shared right-click menu for result grids. Attach per DataGrid via
+                ContextMenu="{StaticResource GridContextMenu}". CommandTarget points
+                at the DataGrid that opened the menu (its PlacementTarget), so the
+                built-in DataGrid Copy/SelectAll commands act on the right grid.
+            -->
+            <ContextMenu x:Key="GridContextMenu">
+                <MenuItem Header="Copy"
+                          Command="ApplicationCommands.Copy"
+                          CommandTarget="{Binding PlacementTarget, RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
+                <MenuItem Header="Select all"
+                          Command="ApplicationCommands.SelectAll"
+                          CommandTarget="{Binding PlacementTarget, RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
+            </ContextMenu>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

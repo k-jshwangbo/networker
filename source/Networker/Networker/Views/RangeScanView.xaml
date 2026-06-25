@@ -55,7 +55,7 @@
         </Grid>
 
         <!-- Alive hosts grid -->
-        <DataGrid Grid.Row="2"
+        <DataGrid Grid.Row="2" ContextMenu="{StaticResource GridContextMenu}"
                   ItemsSource="{Binding AliveHosts}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"

@@ -35,7 +35,7 @@
                       Margin="2,0,0,8" TextWrapping="Wrap"/>
 
         <!-- Routes grid -->
-        <DataGrid Grid.Row="2"
+        <DataGrid Grid.Row="2" ContextMenu="{StaticResource GridContextMenu}"
                   ItemsSource="{Binding Routes}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"

@@ -57,7 +57,7 @@
         </Grid>
 
         <!-- Open ports grid -->
-        <DataGrid Grid.Row="2"
+        <DataGrid Grid.Row="2" ContextMenu="{StaticResource GridContextMenu}"
                   ItemsSource="{Binding OpenPorts}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"

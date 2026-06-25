@@ -57,7 +57,7 @@
         </Grid>
 
         <!-- Hops grid -->
-        <DataGrid Grid.Row="2"
+        <DataGrid Grid.Row="2" ContextMenu="{StaticResource GridContextMenu}"
                   ItemsSource="{Binding Hops}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"

@@ -20,7 +20,17 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ui:TitleBar Grid.Row="0" Title="Networker"/>
+        <ui:TitleBar Grid.Row="0" Title="Networker">
+            <ui:TitleBar.TrailingContent>
+                <ui:Button x:Name="ThemeToggleButton"
+                           Appearance="Transparent"
+                           Padding="8,4"
+                           Margin="0,0,4,0"
+                           ToolTip="Toggle light / dark theme"
+                           Icon="{ui:SymbolIcon WeatherMoon24}"
+                           Click="OnToggleTheme"/>
+            </ui:TitleBar.TrailingContent>
+        </ui:TitleBar>
 
         <TabControl Grid.Row="1" Margin="8,0,8,8">
             <TabItem Header="Ping">
