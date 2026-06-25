@@ -1,5 +1,5 @@
-﻿using Networker.Services.Ping;
-using Networker.Services.PortScan;
+﻿using Networker.Services.BannerGrab;
+using Networker.Services.Ping;
 using Networker.Services.PortScan.Local;
 using Networker.Services.PortScan.Remote;
 using Networker.Services.RangeScan;
@@ -12,6 +12,7 @@ public sealed class MainViewModel
     public PingViewModel Ping { get; }
     public PortScanViewModel PortScan { get; }
     public LocalPortViewModel LocalPort { get; }
+    public BannerGrabViewModel BannerGrab { get; }
     public RangeScanViewModel RangeScan { get; }
     public TracerouteViewModel Traceroute { get; }
 
@@ -25,6 +26,9 @@ public sealed class MainViewModel
 
         ILocalPortService localPortService = new LocalPortService();
         LocalPort = new LocalPortViewModel(localPortService);
+
+        IBannerGrabService bannerService = new BannerGrabService();
+        BannerGrab = new BannerGrabViewModel(bannerService);
 
         IHostDiscoveryService discovery = new HostDiscoveryService(pingService);
         RangeScan = new RangeScanViewModel(discovery);

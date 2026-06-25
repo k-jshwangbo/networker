@@ -31,6 +31,10 @@
                 <views:PortScanView DataContext="{Binding PortScan}"/>
             </TabItem>
 
+            <TabItem Header="Banner Grab">
+                <views:BannerGrabView DataContext="{Binding BannerGrab}"/>
+            </TabItem>
+
             <TabItem Header="Local Ports">
                 <views:LocalPortView DataContext="{Binding LocalPort}"/>
             </TabItem>
