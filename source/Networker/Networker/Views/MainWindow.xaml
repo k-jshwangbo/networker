@@ -47,6 +47,10 @@
                 <views:TracerouteView DataContext="{Binding Traceroute}"/>
             </TabItem>
 
+            <TabItem Header="Interfaces">
+                <views:NetworkInfoView DataContext="{Binding NetworkInfo}"/>
+            </TabItem>
+
             <TabItem Header="Subnet Calc">
                 <views:SubnetView DataContext="{Binding Subnet}"/>
             </TabItem>
