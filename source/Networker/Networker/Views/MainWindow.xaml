@@ -51,6 +51,10 @@
                 <views:NetworkInfoView DataContext="{Binding NetworkInfo}"/>
             </TabItem>
 
+            <TabItem Header="Routes">
+                <views:RoutingTableView DataContext="{Binding RoutingTable}"/>
+            </TabItem>
+
             <TabItem Header="Subnet Calc">
                 <views:SubnetView DataContext="{Binding Subnet}"/>
             </TabItem>
